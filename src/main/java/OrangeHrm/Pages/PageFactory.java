@@ -9,6 +9,7 @@ public class PageFactory {
     private MenuPage menuPage;
     private AddUser addUser;
     private DeleteAddedUser deleteAddedUser;
+    private LeavePage leavePage;
     public PageFactory(WebDriver driver){
         this.driver =driver;
     }
@@ -42,5 +43,11 @@ public class PageFactory {
             deleteAddedUser = new DeleteAddedUser(driver);
         }
         return deleteAddedUser;
+    }
+    public LeavePage getLeavePage(){
+        if(leavePage == null){
+            leavePage = new LeavePage(driver);
+        }
+        return leavePage;
     }
 }

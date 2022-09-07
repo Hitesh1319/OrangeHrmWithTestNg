@@ -6,11 +6,10 @@
             <class name="OrangeHrm.Test.VerifyThatUserIsAbleToApplyLeave"/>
         </classes>
     </test>
-   <!-- <test name="Verify user is added">
-        <parameter name="testRunId" value="TCTC-2"/>
+    <test name="Verify user is added">
+        <parameter name="testRunId" value="TC-2"/>
         <classes>
-            <class name="OrangeHrm.Test.TestToAddAndVerifyUser"/>
+            <class name="OrangeHrm.Test.VerifyThatUserIsAbleToSearchAndViewHisLeave"/>
         </classes>
     </test>
-    -->
 </suite>

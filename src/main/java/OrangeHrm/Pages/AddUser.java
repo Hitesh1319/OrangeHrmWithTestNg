@@ -29,20 +29,14 @@ public class AddUser {
     public void addUser() throws InterruptedException {
         driver.findElement(userRole).click();
         driver.findElement(userRoleDrop).click();
-       // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.findElement(status).click();
         driver.findElement(statusDrop).click();
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.findElement(employeeName).sendKeys("Sania");
-       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Sania')]")));
         driver.findElement(By.xpath("//*[contains(text(),'Sania')]")).click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.findElement(username).sendKeys(userName1);
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.findElement(password).sendKeys("Password@1");
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.findElement(comfirmPassword).sendKeys("Password@1");
-        //wait.until(ExpectedConditions.elementToBeClickable(save));
         Thread.sleep(5000);
         driver.findElement(save).click();
         Thread.sleep(5000);

@@ -10,42 +10,48 @@ public class PageFactory {
     private AddUser addUser;
     private DeleteAddedUser deleteAddedUser;
     private LeavePage leavePage;
-    public PageFactory(WebDriver driver){
-        this.driver =driver;
+
+    public PageFactory(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public LoginPage getLoginPage(){
-        if(loginPage == null){
+    public LoginPage getLoginPage() {
+        if (loginPage == null) {
             loginPage = new LoginPage(driver);
         }
         return loginPage;
     }
-    public AdminPage getAdminPage(){
-        if(adminPage == null){
-            adminPage =new AdminPage(driver);
+
+    public AdminPage getAdminPage() {
+        if (adminPage == null) {
+            adminPage = new AdminPage(driver);
         }
         return adminPage;
     }
-    public MenuPage getMenuPage(){
-        if(menuPage == null){
+
+    public MenuPage getMenuPage() {
+        if (menuPage == null) {
             menuPage = new MenuPage(driver);
         }
         return menuPage;
     }
-    public AddUser getAddUser(){
-        if(addUser == null){
+
+    public AddUser getAddUser() {
+        if (addUser == null) {
             addUser = new AddUser(driver);
         }
         return addUser;
     }
-    public DeleteAddedUser getDeleteAddedUser(){
-        if(deleteAddedUser == null){
+
+    public DeleteAddedUser getDeleteAddedUser() {
+        if (deleteAddedUser == null) {
             deleteAddedUser = new DeleteAddedUser(driver);
         }
         return deleteAddedUser;
     }
-    public LeavePage getLeavePage(){
-        if(leavePage == null){
+
+    public LeavePage getLeavePage() {
+        if (leavePage == null) {
             leavePage = new LeavePage(driver);
         }
         return leavePage;

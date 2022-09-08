@@ -1,33 +1,47 @@
 package OrangeHrm.Test;
 
 import OrangeHrm.Pages.PageFactory;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
-import java.time.Duration;
+import org.testng.annotations.Parameters;
 
 public class BaseClass {
     public static WebDriver driver;
     protected static PageFactory pageFactory;
 
+    @Parameters("browserName")
     @BeforeClass
-    public void setup() {
-        driver = new ChromeDriver();
-        System.setProperty("Webdriver.chrome.driver", "chromedriver.exe");
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        pageFactory= new PageFactory(driver);
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(6));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='orangehrm-login-branding']")));
+    public static void setup(String browserName) {
+        if (browserName.equalsIgnoreCase("Chrome")) {
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+            driver.manage().window().maximize();
+            pageFactory = new PageFactory(driver);
+        } else if (browserName.equalsIgnoreCase("FireFox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+            driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+            driver.manage().window().maximize();
+            pageFactory = new PageFactory(driver);
+        } else if (browserName.equalsIgnoreCase("Edge")) {
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
+            driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+            driver.manage().window().maximize();
+            pageFactory = new PageFactory(driver);
+        }
     }
+
     @AfterClass
-    public void close(){
+    public void close() {
         driver.close();
         driver.quit();
     }

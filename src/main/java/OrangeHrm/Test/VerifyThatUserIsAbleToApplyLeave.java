@@ -7,6 +7,6 @@ public class VerifyThatUserIsAbleToApplyLeave extends BaseClass {
     public void leaveTest() {
             pageFactory.getLoginPage().login();
             pageFactory.getMenuPage().leave();
-            pageFactory.getLeavePage().leave();
+            pageFactory.getLeavePage().clickOnLeave();
         }
 }
